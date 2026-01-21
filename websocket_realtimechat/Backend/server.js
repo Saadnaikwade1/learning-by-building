@@ -1,7 +1,11 @@
 import { createServer } from "node:http";
 import { Server } from "socket.io";
 import express from "express";
+import dotenv from "dotenv";
+dotenv.config();
 
+
+const PORT = process.env.PORT || 3000;
 const app = express();
 const server = createServer(app);
 const io = new Server(server, {
@@ -54,5 +58,5 @@ app.get("/", (req, res) => {
 });
 
 server.listen(4600, () => {
-  console.log("server running at http://localhost:4600");
+  console.log(`server running at http://localhost:${PORT}`);
 });
